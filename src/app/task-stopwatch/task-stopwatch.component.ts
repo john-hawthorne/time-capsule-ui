@@ -1,11 +1,9 @@
-import {AfterContentInit, AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {formatDate} from "@angular/common";
 import * as bootstrap from 'bootstrap';
 import { ITask } from 'src/models/task-stopwatch/task.model';
 import {ITaskType} from "../../models/task-stopwatch/tasktype.model";
 import {TaskStopwatchService} from "./task-stopwatch.service";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-stopwatch',
