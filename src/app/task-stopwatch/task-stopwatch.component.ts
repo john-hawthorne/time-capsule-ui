@@ -242,6 +242,10 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
       });
   }
 
+  getTaskType(id: number): string {
+    return this.taskTypes.find((tt) => tt.id == id)!.name;
+  }
+
   getTotalElapsedTime(): void {
     if (this.tasks.length > 0) {
       let timeArr: { hours: number; mins: number; seconds: number; }[] = [];
