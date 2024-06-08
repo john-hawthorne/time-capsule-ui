@@ -44,7 +44,7 @@
               </button>
             </td>
             <td>{{task.name}}</td>
-            <td *ngIf="displayTaskType">{{taskTypes[task.taskTypeId-1].name}}</td>
+            <td *ngIf="displayTaskType">{{getTaskType(task.taskTypeId)}}</td>
             <td>{{task.elapsedTime}}</td>
             <td>{{task.startTime}}</td>
             <td>{{task.endTime}}</td>
