@@ -23,7 +23,10 @@
       </form>
     </div>
     <div class="card-body">
-      <table class="table table-striped">
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage != ''">
+        {{errorMessage}}
+      </div>
+      <table class="table table-striped" *ngIf="errorMessage == ''">
         <thead>
           <tr>
             <th></th>
@@ -66,7 +69,7 @@
       </table>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false"
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" *ngIf="errorMessage == ''"
         (click)="openAddDialog()" data-bs-target="#addModal">
         <i class="bi bi-plus-circle"></i> Add Task
       </button>
