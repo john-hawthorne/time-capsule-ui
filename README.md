@@ -31,7 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![Screenshot 2024-07-15 202618](https://github.com/user-attachments/assets/b6bb0c1e-60a8-487a-8f20-767581acd74a)
 
-##Stopwatch Page
+## Stopwatch Page
 
 ![Screenshot 2024-07-15 202602](https://github.com/user-attachments/assets/6f781a37-71d0-4e36-931f-92e2624b474e)
 
