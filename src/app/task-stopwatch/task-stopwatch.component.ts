@@ -34,7 +34,6 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   totalElapsedTime: string;
   modal: bootstrap.Modal | null;
   errorMessage: string;
-  pageLoad: boolean;
   constructor(private taskStopwatchService: TaskStopwatchService) {
     this.name = '';
     this.saveDisabled = true;
@@ -54,7 +53,6 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.totalElapsedTime = '';
     this.modal = null;
     this.errorMessage = '';
-    this.pageLoad = false;
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -237,7 +235,6 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
         error => {
           this.errorMessage = `Failed to get tasks: ${error.status}`;
         });
-    this.pageLoad = true;
   }
 
   getTaskTypes(): void {
