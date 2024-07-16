@@ -39,7 +39,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![Screenshot 2024-07-15 202637](https://github.com/user-attachments/assets/39ab4e77-742a-4f46-9eb5-e4a5868312a8)
 
-## Schedule Page
+## Scheduler Page
 
 ![Screenshot 2024-07-15 202851](https://github.com/user-attachments/assets/81061392-9d65-457b-83e3-7d89aa3ca3a9)
 
