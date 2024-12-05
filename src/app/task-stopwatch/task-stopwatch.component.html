@@ -42,7 +42,7 @@
           <tr *ngFor='let task of tasks; index as i'>
             <td>
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-keyboard="false"
-                (click)="openUpdateDialog(task)" data-bs-target="#updateModal">
+                      (click)="openUpdateDialog(task)" data-bs-target="#updateAddManualModal">
                 <i class="bi bi-pencil-fill"></i>
               </button>
             </td>
@@ -69,10 +69,20 @@
       </table>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" *ngIf="errorMessage == ''"
-        (click)="openAddDialog()" data-bs-target="#addModal">
-        <i class="bi bi-plus-circle"></i> Add Task
-      </button>
+      <div class="row">
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" *ngIf="errorMessage == ''"
+                  (click)="openAddDialog()" data-bs-target="#addModal">
+            <i class="bi bi-plus-circle"></i> Add Task
+          </button>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" *ngIf="errorMessage == ''"
+                  (click)="openManualDialog()" data-bs-target="#updateAddManualModal">
+            <i class="bi bi-plus-circle"></i> Add Manual Task
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -114,12 +124,12 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
-  aria-labelledby="updateModalLabel">
+<div class="modal fade" id="updateAddManualModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="updateAddManualModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="updateModalLabel">Update Task</h4>
+        <h4 class="modal-title" id="updateAddManualModalLabel">{{modalName}}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

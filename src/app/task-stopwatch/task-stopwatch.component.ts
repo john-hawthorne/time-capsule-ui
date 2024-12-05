@@ -13,6 +13,7 @@ import {TaskStopwatchService} from "./task-stopwatch.service";
 export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   baseUrl = "https://localhost:7162/";
   selectedTask: any;
+  emptyTask: ITask;
   name: string;
   saveDisabled: boolean;
   stopDisabled: boolean;
@@ -33,6 +34,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   taskTypeId!: number;
   totalElapsedTime: string;
   modal: bootstrap.Modal | null;
+  modalName: string;
   errorMessage: string;
   constructor(private taskStopwatchService: TaskStopwatchService) {
     this.name = '';
@@ -52,7 +54,9 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.selectedDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
     this.totalElapsedTime = '';
     this.modal = null;
+    this.modalName = '';
     this.errorMessage = '';
+    this.emptyTask = new ITask("", "", 1, "", "", "");
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -92,6 +96,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
 
   openUpdateDialog(data: ITask): void {
     this.modal = bootstrap.Modal.getInstance('#addModal');
+    this.modalName = "Update Task";
     this.reset();
     this.selectedTask = { ...data }
     this.name = data.name;
@@ -100,6 +105,21 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.currentStartTime = splitStartTime[1] + ' ' + splitStartTime[2];
     let splitEndTime = data.endTime.split(' ');
     this.currentEndTime = splitEndTime[1] + ' ' + splitEndTime[2];
+    this.editedStartTime = "";
+    this.editedEndTime = "";
+    this.editedStartDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
+    this.editedEndDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
+  }
+
+  openManualDialog(): void {
+    this.modal = bootstrap.Modal.getInstance('#addModal');
+    this.modalName = "Add Manual Task";
+    this.reset();
+    this.selectedTask = { ...this.emptyTask }
+    this.name = this.emptyTask.name;
+    this.taskTypeId = this.emptyTask.taskTypeId;
+    this.currentStartTime = formatDate(new Date, 'shortTime', 'en');
+    this.currentEndTime = formatDate(new Date, 'shortTime', 'en');
     this.editedStartTime = "";
     this.editedEndTime = "";
     this.editedStartDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
@@ -140,6 +160,10 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
           this.getTasks();
         });
     }
+  }
+
+  addManualTask(): void {
+    // TODO
   }
 
   updateTask(): void {
