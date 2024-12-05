@@ -12,9 +12,11 @@ import { TaskSchedulerService } from './task-scheduler.service';
 export class TaskSchedulerComponent implements OnInit {
   names: string[] = [];
   selectedDate: string;
+  dayOfWeek: string;
   schedule: ITaskSchedule;
   constructor(private taskScheduleService: TaskSchedulerService) {
     this.selectedDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
+    this.dayOfWeek = formatDate(new Date, 'fullDate' , 'en');
     this.schedule = new ITaskSchedule("", new Date(), []);
   }
 
