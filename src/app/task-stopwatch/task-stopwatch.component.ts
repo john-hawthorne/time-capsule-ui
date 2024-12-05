@@ -14,6 +14,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   baseUrl = "https://localhost:7162/";
   selectedTask: any;
   emptyTask: ITask;
+  manualTask: ITask;
   name: string;
   saveDisabled: boolean;
   stopDisabled: boolean;
@@ -57,6 +58,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.modalName = '';
     this.errorMessage = '';
     this.emptyTask = new ITask("", "", 1, "", "", "");
+    this.manualTask = new ITask("", "", 1, "", "", "");
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -115,7 +117,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.modal = bootstrap.Modal.getInstance('#addModal');
     this.modalName = "Add Manual Task";
     this.reset();
-    this.selectedTask = { ...this.emptyTask }
+    this.manualTask = { ...this.emptyTask }
     this.name = this.emptyTask.name;
     this.taskTypeId = this.emptyTask.taskTypeId;
     this.currentStartTime = formatDate(new Date, 'shortTime', 'en');
@@ -163,7 +165,24 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   }
 
   addManualTask(): void {
-    // TODO
+    if (this.editedStartTime != "" && this.editedEndTime != "") {
+      let splitTime = this.editedStartTime.split(':');
+      let startHours = parseInt(splitTime[0]);
+      let startMinutes = parseInt(splitTime[1][0] + splitTime[1][1]);
+      let startSeconds = 0;
+      let startPeriod = this.editedStartTime[this.editedStartTime.length - 2] + this.editedStartTime[this.editedStartTime.length - 1];
+      splitTime = this.editedEndTime.split(':');
+      let endHours = parseInt(splitTime[0]);
+      let endMinutes = parseInt(splitTime[1][0] + splitTime[1][1]);
+      let endSeconds = 0;
+      let endPeriod = this.editedEndTime[this.editedEndTime.length - 2] + this.editedEndTime[this.editedEndTime.length - 1];
+      this.modalOpen = false;
+      this.taskStopwatchService.addManualTask(parseInt(this.manualTask.id), this.name, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
+        this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.taskTypeId)
+        .subscribe(() => {
+          this.getTasks();
+        });
+    }
   }
 
   updateTask(): void {

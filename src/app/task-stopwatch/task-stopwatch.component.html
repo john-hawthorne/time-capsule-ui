@@ -42,7 +42,7 @@
           <tr *ngFor='let task of tasks; index as i'>
             <td>
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-keyboard="false"
-                      (click)="openUpdateDialog(task)" data-bs-target="#updateAddManualModal">
+                      (click)="openUpdateDialog(task)" data-bs-target="#updateModal">
                 <i class="bi bi-pencil-fill"></i>
               </button>
             </td>
@@ -78,7 +78,7 @@
         </div>
         <div class="col-auto">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" *ngIf="errorMessage == ''"
-                  (click)="openManualDialog()" data-bs-target="#updateAddManualModal">
+                  (click)="openManualDialog()" data-bs-target="#addManualModal">
             <i class="bi bi-plus-circle"></i> Add Manual Task
           </button>
         </div>
@@ -124,12 +124,12 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="updateAddManualModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
-  aria-labelledby="updateAddManualModalLabel">
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+  aria-labelledby="updateModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="updateAddManualModalLabel">{{modalName}}</h4>
+        <h4 class="modal-title" id="updateModalLabel">{{modalName}}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -178,6 +178,68 @@
       <div class="modal-footer">
         <button class="btn btn-outline-primary" role="button" (click)="updateTask()"
           data-bs-dismiss="modal">Save</button>
+        <button class="btn btn-danger" role="button" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addManualModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+     aria-labelledby="addManualModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="addManualModalLabel">{{modalName}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="col-sm-5 col-form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="name" />
+        </div>
+        <div class="mb-3">
+          <label class="col-sm-5 col-form-label">Type</label>
+          <select id="taskTypeId" class="form-select" [(ngModel)]="taskTypeId" name="taskTypeId">
+            <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
+              {{taskType.name}}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="col-sm-5 col-form-label">Start Time</label>
+          <div class="row">
+            <div class="col-auto">
+              <label for="currentStartTime" class="visually-hidden">Current Start Time</label>
+              <input type="text" readonly class="form-control-plaintext" id="currentStartTime"
+                     value="{{currentStartTime}}">
+            </div>
+            <div class="col-auto">
+              <input type="date" [(ngModel)]="editedStartDate" />
+              <ngx-timepicker-field class="form-control" [controlOnly]="true"
+                                    [(ngModel)]="editedStartTime"></ngx-timepicker-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="col-sm-5 col-form-label">End Time</label>
+          <div class="row">
+            <div class="col-auto">
+              <label for="currentEndTime" class="visually-hidden">Current End Time</label>
+              <input type="text" readonly class="form-control-plaintext" id="currentEndTime" value="{{currentEndTime}}">
+            </div>
+            <div class="col-auto">
+              <input type="date" [(ngModel)]="editedEndDate" />
+              <ngx-timepicker-field class="form-control" [controlOnly]="true"
+                                    [(ngModel)]="editedEndTime"></ngx-timepicker-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-primary" role="button" (click)="addManualTask()"
+                data-bs-dismiss="modal">
+          Save
+        </button>
         <button class="btn btn-danger" role="button" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>

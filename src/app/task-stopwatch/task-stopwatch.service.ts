@@ -20,7 +20,7 @@ export class TaskStopwatchService {
     const options = {
       params: new HttpParams().set('selectedDate', selectedDate).set('taskTypeId', taskTypeId)
     };
-    return this.httpClient.get<any>(this.baseUrl + 'taskstopwatch', options);
+    return this.httpClient.get<any>(this.baseUrl + 'taskstopwatch/GetTasks', options);
   }
 
   addTask(name: string, displayHour: number, displayMinute: number, displaySecond: number,
@@ -34,7 +34,28 @@ export class TaskStopwatchService {
         .set('startTime', startTime)
         .set('taskTypeId', taskTypeId)
     };
-    return this.httpClient.post(this.baseUrl + 'taskstopwatch', {}, options);
+    return this.httpClient.post(this.baseUrl + 'taskstopwatch/AddTask', {}, options);
+  }
+
+  addManualTask(id: number, name: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
+    endHours: number, endMinutes: number, endSeconds: number, endPeriod: string, taskTypeId: number): Observable<any> {
+    const options = {
+      params: new HttpParams()
+        .set('id', id)
+        .set('name', name)
+        .set('startDate', editedStartDate)
+        .set('startHours', startHours)
+        .set('startMinutes', startMinutes)
+        .set('startSeconds', startSeconds)
+        .set('startPeriod', startPeriod)
+        .set('endDate', editedEndDate)
+        .set('endHours', endHours)
+        .set('endMinutes', endMinutes)
+        .set('endSeconds', endSeconds)
+        .set('endPeriod', endPeriod)
+        .set('taskTypeId', taskTypeId)
+    };
+    return this.httpClient.post(this.baseUrl + 'taskstopwatch/AddManualTask', {}, options);
   }
 
   updateTask(id: number, name: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
@@ -55,7 +76,7 @@ export class TaskStopwatchService {
         .set('endPeriod', endPeriod)
         .set('taskTypeId', taskTypeId)
     };
-    return this.httpClient.put(this.baseUrl + 'taskstopwatch', {}, options);
+    return this.httpClient.put(this.baseUrl + 'taskstopwatch/UpdateTask', {}, options);
   }
 
   deleteTask(id: string) {
@@ -63,6 +84,6 @@ export class TaskStopwatchService {
       params: new HttpParams()
         .set('id', id)
     }
-    return this.httpClient.request('delete', this.baseUrl + 'taskstopwatch', options);
+    return this.httpClient.request('delete', this.baseUrl + 'taskstopwatch/DeleteTask', options);
   }
 }
