@@ -24,7 +24,7 @@ export class TaskSchedulerComponent implements OnInit {
 
   reset(): void {
     if (typeof this.names !== 'undefined') {
-      for (var i = 0; i < 15; i++) {
+      for (var i = 0; i < 18; i++) {
         this.names[i] = "";
       }
     }
