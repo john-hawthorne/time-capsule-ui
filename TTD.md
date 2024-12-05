@@ -21,7 +21,7 @@
 [ ] Add login/logout capability (research needed)  
 [X] Move backend tasks to TTD within backend project
 [ ] Stop stopwatch if user submits new task without stopping stopwatch
-[ ] Add row for total elapsed time  
+[X] Add row for total elapsed time  
 [X] Add ability to delete[50:37]
 [ ] Click Task from Scheduler and Pop Up Stopwatch with Task Name prefilled(move to Stopwatch page maybe?)
 [X] Deploy (CLI) [2:27:18], Deploy (environments) [35:18]

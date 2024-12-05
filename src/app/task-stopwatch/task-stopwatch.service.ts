@@ -13,7 +13,7 @@ export class TaskStopwatchService {
   constructor(private httpClient: HttpClient) { }
 
   getTaskTypes(): Observable<ITaskType[]> {
-    return this.httpClient.get<ITaskType[]>(this.baseUrl + 'tasktype');
+    return this.httpClient.get<ITaskType[]>(this.baseUrl + 'tasktype/GetTaskTypes');
   }
 
   getTasks(selectedDate: string, taskTypeId: number): Observable<ITask[]> {
