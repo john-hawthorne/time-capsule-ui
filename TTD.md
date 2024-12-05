@@ -32,4 +32,4 @@ confirmation for closing window[1:08:27]
 rewrite stopwatch[56:53]  
 Create services for API access [43:40] todo: stopwatch
 
-[ ] Add Manual Task
+[X] Add Manual Task
