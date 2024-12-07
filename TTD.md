@@ -38,3 +38,8 @@ Create services for API access [43:40] todo: stopwatch
 - Add checkboxes to the Scheduler UI
 - Update TimeSlot data model within UI
 - Update database with new field
+[ ] Add notes to stopwatch grid
+- Add notes column to tasks data model
+-- UI
+-- API
+-- Database
