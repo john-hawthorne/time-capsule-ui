@@ -43,3 +43,5 @@ Create services for API access [43:40] todo: stopwatch
 -- UI
 -- API
 -- Database
+[ ] Add Task Type 
+- [ ] plus sign next to task types on Stopwatch page
