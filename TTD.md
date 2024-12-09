@@ -34,14 +34,16 @@ Create services for API access [43:40] todo: stopwatch
 
 [X] Add Manual Task
 [ ] Add a completed checkbox to Scheduler grid
-- Need to update TimeSlot data model
-- Add checkboxes to the Scheduler UI
-- Update TimeSlot data model within UI
-- Update database with new field
+- [ ] Need to update TimeSlot data model
+- [ ] Add checkboxes to the Scheduler UI
+- [ ] Update TimeSlot data model within UI
+- [ ] Update database with new field
 [ ] Add notes to stopwatch grid
-- Add notes column to tasks data model
--- UI
--- API
--- Database
+- [ ] Add notes column to tasks data model
+-- [ ] UI
+-- [ ] API
+-- [ ] Database
 [ ] Add Task Type 
 - [ ] plus sign next to task types on Stopwatch page
+- [ ] add task type modal (save and cancel buttons)
+[ ] Group the tasks together in a box?
