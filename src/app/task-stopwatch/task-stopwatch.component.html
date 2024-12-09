@@ -18,6 +18,12 @@
           </select>
         </div>
         <div class="col">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false"
+                  (click)="openAddTaskTypeDialog()" data-bs-target="#addTaskTypeModal">
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
+        <div class="col">
           <button class="btn btn-primary float-end" (click)="getTasks()">Get Tasks</button>
         </div>
       </form>
@@ -242,6 +248,32 @@
         </button>
         <button class="btn btn-danger" role="button" data-bs-dismiss="modal">Cancel</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addTaskTypeModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+     aria-labelledby="addTaskTypeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #addTaskTypeForm="ngForm">
+        <div class="modal-header">
+          <h4 class="modal-title" id="addTaskTypeModalLabel">Add Task Type</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="cancelAddTaskType()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Task Type Name" [(ngModel)]="taskTypeName" name="taskTypeName" required />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary" role="button" (click)="addTaskType()" [disabled]="!addTaskTypeForm.form.valid"
+                  data-bs-dismiss="modal">
+            Save
+          </button>
+          <button class="btn btn-danger" role="button" (click)="cancelAddTaskType()">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

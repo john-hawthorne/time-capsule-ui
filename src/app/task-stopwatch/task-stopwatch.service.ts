@@ -37,6 +37,14 @@ export class TaskStopwatchService {
     return this.httpClient.post(this.baseUrl + 'taskstopwatch/AddTask', {}, options);
   }
 
+  addTaskType(taskTypeName: string): Observable<any> {
+    const options = {
+      params: new HttpParams()
+        .set('taskTypeName', taskTypeName)
+    };
+    return this.httpClient.post(this.baseUrl + 'tasktype/AddTaskType', {}, options);
+  }
+
   addManualTask(id: number, name: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
     endHours: number, endMinutes: number, endSeconds: number, endPeriod: string, taskTypeId: number): Observable<any> {
     const options = {

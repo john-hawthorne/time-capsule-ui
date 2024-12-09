@@ -33,6 +33,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   tasks: ITask[];
   taskTypes: ITaskType[];
   taskTypeId!: number;
+  taskTypeName: string;
   totalElapsedTime: string;
   modal: bootstrap.Modal | null;
   modalName: string;
@@ -46,6 +47,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.displayTaskType = false;
     this.tasks = [];
     this.taskTypes = [];
+    this.taskTypeName = '';
     this.currentStartTime = '';
     this.currentEndTime = '';
     this.editedStartTime = '';
@@ -96,6 +98,11 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.reset();
   }
 
+  openAddTaskTypeDialog(): void {
+    this.modal = bootstrap.Modal.getInstance('#addTaskTypeModal');
+    this.resetTaskType();
+  }
+
   openUpdateDialog(data: ITask): void {
     this.modal = bootstrap.Modal.getInstance('#addModal');
     this.modalName = "Update Task";
@@ -144,6 +151,11 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.modalOpen = true;
   }
 
+  resetTaskType(): void {
+    this.taskTypeName = "";
+    this.modalOpen = true;
+  }
+
   addTask(): void {
     this.modalOpen = false;
     this.modal = null;
@@ -162,6 +174,17 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
           this.getTasks();
         });
     }
+  }
+
+  addTaskType(): void {
+    this.modalOpen = false;
+    this.modal = null;
+
+    this.taskStopwatchService.addTaskType(this.taskTypeName)
+      .subscribe(response => {
+        //const modal = bootstrap.Modal.getInstance('addDialog'); // weird issue where modals won't load without this
+        this.getTasks();
+      });
   }
 
   addManualTask(): void {
@@ -231,7 +254,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
 
   cancel(): void {
     if (!this.stopDisabled || !this.saveDisabled) {
-      let closeModal = confirm("Changed you made may not be saved.");
+      let closeModal = confirm("Changes you made may not be saved.");
       if (closeModal) {
         this.modal?.hide();
         this.modal = null;
@@ -245,6 +268,12 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
       this.modal = null;
       this.modalOpen = false;
     }
+  }
+
+  cancelAddTaskType(): void {
+    this.modal?.hide();
+    this.modal = null;
+    this.modalOpen = false;
   }
 
   start(): void {
