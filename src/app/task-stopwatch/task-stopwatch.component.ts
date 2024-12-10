@@ -296,7 +296,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
   }
 
   getTaskType(id: number): string {
-    return this.taskTypes.find((tt) => tt.id == this.taskTypeId)!.name;
+    return this.taskTypes.find((tt) => tt.id == id)!.name;
   }
 
   getTotalElapsedTime(): void {
