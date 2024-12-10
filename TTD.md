@@ -50,3 +50,5 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Group the tasks together in a box?
 [ ] Different color for the types of buttons
 [ ] Rename AddModal
+[ ] Bugs
+- [ ] Task Type dropdown not updating after changing tasks' task type
