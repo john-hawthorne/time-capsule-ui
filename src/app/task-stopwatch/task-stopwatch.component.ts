@@ -10,7 +10,7 @@ import {TaskStopwatchService} from "./task-stopwatch.service";
   templateUrl: './task-stopwatch.component.html',
   styleUrls: ['./task-stopwatch.component.css']
 })
-export class TaskStopwatchComponent implements OnInit, AfterViewInit {
+export class TaskStopwatchComponent implements AfterViewInit {
   baseUrl = "https://localhost:7162/";
   selectedTask: any;
   emptyTask: ITask;
@@ -64,23 +64,12 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
-    const tt = document.getElementById("taskTypeId");
-    if (tt) {
-      tt.addEventListener("change", () => {
-        this.getTasks();
-      });
-    }
-
     const sd = document.getElementById("selectedDate");
     if (sd) {
       sd.addEventListener("change", () => {
         this.getTasks();
       })
     }
-  }
-
-  ngOnInit(): void {
-    this.getTaskTypes();
   }
 
   @HostListener('window:beforeunload')
@@ -93,14 +82,16 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     return true;
   }
 
+  onGetTaskTypes(taskTypes: ITaskType[]) {
+    this.taskTypes = taskTypes;
+    this.taskTypeId = this.taskTypes[0].id;
+
+    this.getTasks();
+  }
+
   openAddDialog(): void {
     this.modal = bootstrap.Modal.getInstance('#addModal');
     this.reset();
-  }
-
-  openAddTaskTypeDialog(): void {
-    this.modal = bootstrap.Modal.getInstance('#addTaskTypeModal');
-    this.resetTaskType();
   }
 
   openUpdateDialog(data: ITask): void {
@@ -174,17 +165,6 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
           this.getTasks();
         });
     }
-  }
-
-  addTaskType(): void {
-    this.modalOpen = false;
-    this.modal = null;
-
-    this.taskStopwatchService.addTaskType(this.taskTypeName)
-      .subscribe(response => {
-        //const modal = bootstrap.Modal.getInstance('addDialog'); // weird issue where modals won't load without this
-        this.getTaskTypes();
-      });
   }
 
   addManualTask(): void {
@@ -270,12 +250,6 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     }
   }
 
-  cancelAddTaskType(): void {
-    this.modal?.hide();
-    this.modal = null;
-    this.modalOpen = false;
-  }
-
   start(): void {
     if (window.Worker) {
       this.worker = new Worker(new URL('./../app.worker', import.meta.url));
@@ -309,18 +283,20 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
         });
   }
 
-  getTaskTypes(): void {
-    this.taskStopwatchService.getTaskTypes()
+  onGetTasks(taskTypeId: number): void {
+    this.taskStopwatchService.getTasks(this.selectedDate, taskTypeId)
       .subscribe(response => {
-        this.taskTypes = [...response];
-        this.taskTypeId = this.taskTypes[0].id;
-
-        this.getTasks();
-      });
+        this.displayTaskType = taskTypeId == 1;
+        this.tasks = [...response];
+        this.getTotalElapsedTime();
+      },
+        error => {
+          this.errorMessage = `Failed to get tasks: ${error.status}`;
+        });
   }
 
   getTaskType(id: number): string {
-    return this.taskTypes.find((tt) => tt.id == id)!.name;
+    return this.taskTypes.find((tt) => tt.id == this.taskTypeId)!.name;
   }
 
   getTotalElapsedTime(): void {

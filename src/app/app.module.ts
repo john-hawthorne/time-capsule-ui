@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { TaskSchedulerComponent } from './task-scheduler/task-scheduler.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { TaskTypeComponent } from './task-type/task-type.component';
 
 
 
@@ -21,7 +22,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     TaskStopwatchComponent,
     NavMenuComponent,
     HomeComponent,
-    TaskSchedulerComponent
+    TaskSchedulerComponent,
+    TaskTypeComponent
   ],
   imports: [
     BrowserModule,
