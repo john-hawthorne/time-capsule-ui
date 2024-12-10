@@ -183,7 +183,7 @@ export class TaskStopwatchComponent implements OnInit, AfterViewInit {
     this.taskStopwatchService.addTaskType(this.taskTypeName)
       .subscribe(response => {
         //const modal = bootstrap.Modal.getInstance('addDialog'); // weird issue where modals won't load without this
-        this.getTasks();
+        this.getTaskTypes();
       });
   }
 

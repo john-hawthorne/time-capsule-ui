@@ -46,7 +46,7 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Add Task Type 
 - [X] plus sign next to task types on Stopwatch page
 - [X] add task type modal (save and cancel buttons)
-- [ ] Create component for task type?
+- [ ] Create component for task type? (dropdown and add button)
 [ ] Group the tasks together in a box?
 [ ] Different color for the types of buttons
 [ ] Rename AddModal
