@@ -284,6 +284,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
   }
 
   onGetTasks(taskTypeId: number): void {
+    this.taskTypeId = taskTypeId;
     this.taskStopwatchService.getTasks(this.selectedDate, taskTypeId)
       .subscribe(response => {
         this.displayTaskType = taskTypeId == 1;
