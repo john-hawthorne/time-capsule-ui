@@ -50,6 +50,7 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Group the tasks together in a box?
 [ ] Different color for the types of buttons
 [ ] Rename AddModal
+[ ] Modify scheduler to update when a new date is selected
 [ ] Bugs
 - [ ] Task Type dropdown not updating after changing tasks' task type
 - [ ] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
