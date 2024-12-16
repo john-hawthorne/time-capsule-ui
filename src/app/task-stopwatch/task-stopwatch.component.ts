@@ -33,6 +33,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
   tasks: ITask[];
   taskTypes: ITaskType[];
   taskTypeId!: number;
+  modalTaskTypeId!: number;
   taskTypeName: string;
   totalElapsedTime: string;
   modal: bootstrap.Modal | null;
@@ -100,7 +101,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.reset();
     this.selectedTask = { ...data }
     this.name = data.name;
-    this.taskTypeId = data.taskTypeId;
+    this.modalTaskTypeId = data.taskTypeId;
     let splitStartTime = data.startTime.split(' ');
     this.currentStartTime = splitStartTime[1] + ' ' + splitStartTime[2];
     let splitEndTime = data.endTime.split(' ');
@@ -117,7 +118,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.reset();
     this.manualTask = { ...this.emptyTask }
     this.name = this.emptyTask.name;
-    this.taskTypeId = this.emptyTask.taskTypeId;
+    this.modalTaskTypeId = this.emptyTask.taskTypeId;
     this.currentStartTime = formatDate(new Date, 'shortTime', 'en');
     this.currentEndTime = formatDate(new Date, 'shortTime', 'en');
     this.editedStartTime = "";
@@ -135,6 +136,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
       secondElement.innerText = "00";
       hourElement.innerText = "00";
     }
+    this.modalTaskTypeId = this.taskTypeId;
     this.name = "";
     this.saveDisabled = true;
     this.stopDisabled = true;
@@ -159,8 +161,9 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let displayHour = parseInt(hourElement.innerText);
 
       this.taskStopwatchService.addTask(this.name, displayHour, displayMinute, displaySecond,
-        this.startTime.toLocaleString(), this.taskTypeId)
+        this.startTime.toLocaleString(), this.modalTaskTypeId)
         .subscribe(response => {
+          this.taskTypeId = 1;
           //const modal = bootstrap.Modal.getInstance('addDialog'); // weird issue where modals won't load without this
           this.getTasks();
         });
@@ -181,8 +184,9 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let endPeriod = this.editedEndTime[this.editedEndTime.length - 2] + this.editedEndTime[this.editedEndTime.length - 1];
       this.modalOpen = false;
       this.taskStopwatchService.addManualTask(parseInt(this.manualTask.id), this.name, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
-        this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.taskTypeId)
+        this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.modalTaskTypeId)
         .subscribe(() => {
+          this.taskTypeId = 1;
           this.getTasks();
         });
     }
@@ -202,14 +206,16 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let endPeriod = this.editedEndTime[this.editedEndTime.length - 2] + this.editedEndTime[this.editedEndTime.length - 1];
       this.modalOpen = false;
       this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
-        this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.taskTypeId)
+        this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.modalTaskTypeId)
         .subscribe(() => {
+          this.taskTypeId = 1;
           this.getTasks();
         });
     } else {
       this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.editedStartDate, 0, 0, 0, 'AM',
-        this.editedEndDate, 0, 0, 0, 'AM', this.taskTypeId)
+        this.editedEndDate, 0, 0, 0, 'AM', this.modalTaskTypeId)
         .subscribe(() => {
+          this.taskTypeId = 1;
           this.getTasks();
         });
     }

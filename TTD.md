@@ -53,9 +53,8 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Update Task type after adding task
 [ ] Update Task Type after adding manual task
 [ ] Update Task type after updating task
-[ ] Bugs
-- [ ] Task Type dropdown not updating after changing tasks' task type
-- [ ] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
-- [ ] - Update the task type drop down? Or leave it?
-- [ ] - Take note of how the dropdown works now when updating and adding tasks
-- [ ] Add Manual Task is broken
+[X] Bugs
+- [X] Task Type dropdown not updating after changing tasks' task type
+- [X] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
+- [X] - Update the task type drop down? Or leave it? Set it to all after adding a task
+- [X] Add Manual Task is broken

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TaskTypeService } from './task-type.service';
 import { ITaskType } from '../../models/task-stopwatch/tasktype.model';
 import * as bootstrap from 'bootstrap';
@@ -8,8 +8,8 @@ import * as bootstrap from 'bootstrap';
   templateUrl: './task-type.component.html',
   styleUrls: ['./task-type.component.css']
 })
-export class TaskTypeComponent implements OnInit {
-  taskTypeId!: number;
+export class TaskTypeComponent implements OnInit, OnChanges {
+  @Input() childTaskTypeId!: number;
   taskTypes: ITaskType[];
   modal: bootstrap.Modal | null;
   taskTypeName: string;
@@ -26,15 +26,21 @@ export class TaskTypeComponent implements OnInit {
     this.retrievedTaskTypes = new EventEmitter<ITaskType[]>();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["childTaskTypeId"].currentValue != changes["childTaskTypeId"].previousValue) {
+      this.selectedTaskTypeId.emit(this.childTaskTypeId);
+    }
+  }
+
   ngOnInit(): void {
     this.getTaskTypes();
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
-    const tt = document.getElementById("taskTypeId");
+    const tt = document.getElementById("childTaskTypeId");
     if (tt) {
       tt.addEventListener("change", () => {
-        this.selectedTaskTypeId.emit(this.taskTypeId);
+        this.selectedTaskTypeId.emit(this.childTaskTypeId);
       });
     }
   }
@@ -44,8 +50,8 @@ export class TaskTypeComponent implements OnInit {
       .subscribe(response => {
         this.retrievedTaskTypes.emit([...response]);
         this.taskTypes = [...response];
-        this.taskTypeId = this.taskTypes[0].id;
-        this.selectedTaskTypeId.emit(this.taskTypeId);
+        this.childTaskTypeId = this.taskTypes[0].id;
+        this.selectedTaskTypeId.emit(this.childTaskTypeId);
       });
   }
 
