@@ -10,7 +10,7 @@
         <div class="col-5">
           <input id="selectedDate" type="date" class="form-control" [(ngModel)]="selectedDate" name="selectedDate" />
         </div>
-        <app-task-type class="col-6" (selectedTaskTypeId)="onGetTasks($event)" (retrievedTaskTypes)="onGetTaskTypes($event)"></app-task-type>
+        <app-task-type class="col-6" [childTaskTypeId]="taskTypeId" (selectedTaskTypeId)="onGetTasks($event)" (retrievedTaskTypes)="onGetTaskTypes($event)"></app-task-type>
         <div class="col">
           <button class="btn btn-primary float-end" (click)="getTasks()">Get Tasks</button>
         </div>
@@ -97,7 +97,7 @@
               [disabled]="goDisabled">Go!</button>
           </div>
           <div class="input-group mb-3">
-            <select id="taskTypeId" class="form-select" [(ngModel)]="taskTypeId" name="taskTypeId">
+            <select id="modalTaskTypeId" class="form-select" [(ngModel)]="modalTaskTypeId" name="modalTaskTypeId">
               <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
                 {{taskType.name}}
               </option>
@@ -133,7 +133,7 @@
         </div>
         <div class="mb-3">
           <label class="col-sm-5 col-form-label">Type</label>
-          <select id="taskTypeId" class="form-select" [(ngModel)]="taskTypeId" name="taskTypeId">
+          <select id="modalTaskTypeId" class="form-select" [(ngModel)]="modalTaskTypeId" name="modalTaskTypeId">
             <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
               {{taskType.name}}
             </option>
@@ -193,7 +193,7 @@
         </div>
         <div class="mb-3">
           <label class="col-sm-5 col-form-label">Type</label>
-          <select id="taskTypeId" class="form-select" [(ngModel)]="taskTypeId" name="taskTypeId">
+          <select id="modalTaskTypeId" class="form-select" [(ngModel)]="modalTaskTypeId" name="modalTaskTypeId">
             <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
               {{taskType.name}}
             </option>

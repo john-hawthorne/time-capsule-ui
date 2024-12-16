@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-    <select id="taskTypeId" class="form-select" [(ngModel)]="taskTypeId" name="taskTypeId">
+    <select id="childTaskTypeId" class="form-select" [(ngModel)]="childTaskTypeId" name="childTaskTypeId">
       <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
         {{taskType.name}}
       </option>
