@@ -49,10 +49,10 @@ Create services for API access [43:40] todo: stopwatch
 - [X] Create component for task type? (dropdown and add button)
 [ ] Group the tasks together in a box?
 [ ] Different color for the types of buttons
-[ ] Rename AddModal
 [ ] Modify scheduler to update when a new date is selected
-[ ] Alert for adding task type
 [ ] Changing the schedule date in Add Schedule needs to update the task name inputs
+[ ] Rename AddModal
+[ ] Add Task Type within Add Task Modal
 [X] Update Task type after adding task
 [X] Update Task Type after adding manual task
 [X] Update Task type after updating task
