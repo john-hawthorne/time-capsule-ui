@@ -51,7 +51,7 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Different color for the types of buttons
 [X] Modify scheduler to update when a new date is selected
 [ ] Delete schedule 
-[ ] Changing the schedule date in Add Schedule needs to update the task name inputs
+[X] Disable schedule date
 [ ] Rename AddModal
 [-] Add Task Type within Add Task Modal (only one modal displays? doesn't look like there can be two modals displayed at the same time?)
 [X] Improve task type component styling 
