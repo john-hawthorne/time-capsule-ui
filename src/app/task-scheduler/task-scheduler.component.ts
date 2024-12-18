@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {formatDate} from "@angular/common";
 import {ITaskSchedule} from "../../models/task-scheduler/taskschedule.model";
@@ -9,7 +9,7 @@ import { TaskSchedulerService } from './task-scheduler.service';
   templateUrl: './task-scheduler.component.html',
   styleUrls: ['./task-scheduler.component.css']
 })
-export class TaskSchedulerComponent implements OnInit {
+export class TaskSchedulerComponent implements OnInit, AfterViewInit {
   names: string[] = [];
   selectedDate: string;
   dayOfWeek: string;
@@ -22,6 +22,16 @@ export class TaskSchedulerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSchedule();
+  }
+
+  ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
+    const sd = document.getElementById("selectedDate");
+    if (sd) {
+      sd.addEventListener("change", () => {
+        this.getSchedule();
+        this.dayOfWeek = formatDate(this.selectedDate, 'fullDate', 'en');
+      })
+    }
   }
 
   reset(): void {
