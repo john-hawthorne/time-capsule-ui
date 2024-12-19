@@ -50,7 +50,7 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Group the tasks together in a box?
 [ ] Different color for the types of buttons
 [X] Modify scheduler to update when a new date is selected
-[ ] Delete schedule 
+[X] Delete schedule 
 [X] Disable schedule date
 [ ] Rename AddModal
 [-] Add Task Type within Add Task Modal (only one modal displays? doesn't look like there can be two modals displayed at the same time?)
