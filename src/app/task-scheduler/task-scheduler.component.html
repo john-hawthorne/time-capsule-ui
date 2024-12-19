@@ -23,30 +23,37 @@
     <div class="card-body">
       <table class="table table-striped">
         <thead>
-        <tr>
-          <th>Scheduled Time</th>
-          <th>Task Name</th>
-        </tr>
+          <tr>
+            <th>Scheduled Time</th>
+            <th>Task Name</th>
+          </tr>
         </thead>
         <tbody>
-        <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
-          <td>{{timeSlot.slotTime}}</td>
-          <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
-        </tr>
+          <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
+            <td>{{timeSlot.slotTime}}</td>
+            <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
+          </tr>
         </tbody>
       </table>
       <!-- Button trigger modal -->
-
-      <button *ngIf="schedule.timeSlots && schedule.timeSlots.length == 0" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false"
-              (click)="openAddDialog()" data-bs-target="#addModal">
-        <i class="bi bi-plus-circle"></i> Add Schedule
-      </button>
-      <button *ngIf="schedule.timeSlots && schedule.timeSlots.length > 0" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-keyboard="false"
-              (click)="openEditDialog()" data-bs-target="#editModal">
-        <i class="bi bi-pencil-fill"></i> Edit Schedule
-      </button>
+      <div class="row">
+        <div class="col-auto" *ngIf="schedule.timeSlots && schedule.timeSlots.length == 0">
+          <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false"
+                  (click)="openAddDialog()" data-bs-target="#addModal">
+            <i class="bi bi-plus-circle"></i> Add Schedule
+          </button>
+        </div>
+        <div class="col-auto" *ngIf="schedule.timeSlots && schedule.timeSlots.length > 0">
+          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-keyboard="false"
+                  (click)="openEditDialog()" data-bs-target="#editModal">
+            <i class="bi bi-pencil-fill"></i> Edit Schedule
+          </button>
+        </div>
+        <div class="col-auto" *ngIf="schedule.timeSlots && schedule.timeSlots.length > 0">
+          <button type="button" class="btn btn-danger" (click)="deleteSchedule()">Delete</button>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 
 <!-- Modal -->

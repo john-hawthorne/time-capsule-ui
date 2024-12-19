@@ -67,7 +67,16 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     this.taskScheduleService.updateSchedule(this.selectedDate, this.names)
       .subscribe(() => {
         this.getSchedule();
-      })
+      });
+  }
+
+  deleteSchedule(): void {
+    if (window.confirm(`Delete Schedule?`)) {
+      this.taskScheduleService.deleteSchedule(this.selectedDate)
+        .subscribe(() => {
+          this.getSchedule();
+        });
+    }
   }
 
   getSchedule(): void {
@@ -77,6 +86,6 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
         for (let i = 0; i < this.schedule.timeSlots.length; i++) {
           this.names[i] = this.schedule.timeSlots[i].taskName;
         }
-      })
+      });
   };
 }
