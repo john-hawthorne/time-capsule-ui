@@ -35,6 +35,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
   taskTypeId!: number;
   modalTaskTypeId!: number;
   taskTypeName: string;
+  notes: string;
   totalElapsedTime: string;
   modal: bootstrap.Modal | null;
   modalName: string;
@@ -48,6 +49,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.displayTaskType = false;
     this.tasks = [];
     this.taskTypes = [];
+    this.notes = '';
     this.taskTypeName = '';
     this.currentStartTime = '';
     this.currentEndTime = '';
@@ -60,8 +62,8 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.modal = null;
     this.modalName = '';
     this.errorMessage = '';
-    this.emptyTask = new ITask("", "", 1, "", "", "");
-    this.manualTask = new ITask("", "", 1, "", "", "");
+    this.emptyTask = new ITask("", "", "", 1, "", "", "");
+    this.manualTask = new ITask("", "", "", 1, "", "", "");
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -101,6 +103,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.reset();
     this.selectedTask = { ...data }
     this.name = data.name;
+    this.notes = data.notes;
     this.modalTaskTypeId = data.taskTypeId;
     let splitStartTime = data.startTime.split(' ');
     this.currentStartTime = splitStartTime[1] + ' ' + splitStartTime[2];
@@ -118,6 +121,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.reset();
     this.manualTask = { ...this.emptyTask }
     this.name = this.emptyTask.name;
+    this.notes = this.emptyTask.notes;
     this.modalTaskTypeId = this.emptyTask.taskTypeId;
     this.currentStartTime = formatDate(new Date, 'shortTime', 'en');
     this.currentEndTime = formatDate(new Date, 'shortTime', 'en');
@@ -125,6 +129,13 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.editedEndTime = "";
     this.editedStartDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
     this.editedEndDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
+  }
+
+  openNotes(data: ITask) {
+    this.modal = bootstrap.Modal.getInstance('#notesModal');
+    this.modalName = "Notes";
+    this.reset;
+    this.selectedTask = { ...data };
   }
 
   reset(): void {
@@ -160,7 +171,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let displayMinute = parseInt(minElement.innerText);
       let displayHour = parseInt(hourElement.innerText);
 
-      this.taskStopwatchService.addTask(this.name, displayHour, displayMinute, displaySecond,
+      this.taskStopwatchService.addTask(this.name, this.notes, displayHour, displayMinute, displaySecond,
         this.startTime.toLocaleString(), this.modalTaskTypeId)
         .subscribe(response => {
           this.taskTypeId = 1;
@@ -183,7 +194,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let endSeconds = 0;
       let endPeriod = this.editedEndTime[this.editedEndTime.length - 2] + this.editedEndTime[this.editedEndTime.length - 1];
       this.modalOpen = false;
-      this.taskStopwatchService.addManualTask(parseInt(this.manualTask.id), this.name, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
+      this.taskStopwatchService.addManualTask(parseInt(this.manualTask.id), this.name, this.notes, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
         this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.modalTaskTypeId)
         .subscribe(() => {
           this.taskTypeId = 1;
@@ -205,14 +216,14 @@ export class TaskStopwatchComponent implements AfterViewInit {
       let endSeconds = 0;
       let endPeriod = this.editedEndTime[this.editedEndTime.length - 2] + this.editedEndTime[this.editedEndTime.length - 1];
       this.modalOpen = false;
-      this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
+      this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.notes, this.editedStartDate, startHours, startMinutes, startSeconds, startPeriod,
         this.editedEndDate, endHours, endMinutes, endSeconds, endPeriod, this.modalTaskTypeId)
         .subscribe(() => {
           this.taskTypeId = 1;
           this.getTasks();
         });
     } else {
-      this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.editedStartDate, 0, 0, 0, 'AM',
+      this.taskStopwatchService.updateTask(this.selectedTask.id, this.name, this.notes, this.editedStartDate, 0, 0, 0, 'AM',
         this.editedEndDate, 0, 0, 0, 'AM', this.modalTaskTypeId)
         .subscribe(() => {
           this.taskTypeId = 1;

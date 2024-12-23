@@ -23,11 +23,12 @@ export class TaskStopwatchService {
     return this.httpClient.get<any>(this.baseUrl + 'taskstopwatch/GetTasks', options);
   }
 
-  addTask(name: string, displayHour: number, displayMinute: number, displaySecond: number,
+  addTask(name: string, notes: string, displayHour: number, displayMinute: number, displaySecond: number,
           startTime: string, taskTypeId: number): Observable<any> {
     const options = {
       params: new HttpParams()
         .set('name', name)
+        .set('notes', notes)
         .set('elapsedHour', displayHour)
         .set('elapsedMinute', displayMinute)
         .set('elapsedSecond', displaySecond)
@@ -45,12 +46,13 @@ export class TaskStopwatchService {
     return this.httpClient.post(this.baseUrl + 'tasktype/AddTaskType', {}, options);
   }
 
-  addManualTask(id: number, name: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
+  addManualTask(id: number, name: string, notes: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
     endHours: number, endMinutes: number, endSeconds: number, endPeriod: string, taskTypeId: number): Observable<any> {
     const options = {
       params: new HttpParams()
         .set('id', id)
         .set('name', name)
+        .set('notes', notes)
         .set('startDate', editedStartDate)
         .set('startHours', startHours)
         .set('startMinutes', startMinutes)
@@ -66,12 +68,13 @@ export class TaskStopwatchService {
     return this.httpClient.post(this.baseUrl + 'taskstopwatch/AddManualTask', {}, options);
   }
 
-  updateTask(id: number, name: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
+  updateTask(id: number, name: string, notes: string, editedStartDate: string, startHours: number, startMinutes: number, startSeconds: number, startPeriod: string, editedEndDate: string,
   endHours: number, endMinutes: number, endSeconds: number, endPeriod: string, taskTypeId: number): Observable<any> {
     const options = {
       params: new HttpParams()
         .set('id', id)
         .set('name', name)
+        .set('notes', notes)
         .set('startDate', editedStartDate)
         .set('startHours', startHours)
         .set('startMinutes', startMinutes)
