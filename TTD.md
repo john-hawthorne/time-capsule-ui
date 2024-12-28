@@ -43,6 +43,10 @@ Create services for API access [43:40] todo: stopwatch
 -- [ ] UI
 -- [ ] API
 -- [ ] Database
+[ ] Request Body
+- [ ] Add Task
+- [ ] Add Manual Task
+- [ ] Update Task
 [X] Add Task Type 
 - [X] plus sign next to task types on Stopwatch page
 - [X] add task type modal (save and cancel buttons)
