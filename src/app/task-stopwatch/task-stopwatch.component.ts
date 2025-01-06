@@ -95,6 +95,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
   openAddDialog(): void {
     this.modal = bootstrap.Modal.getInstance('#addModal');
     this.reset();
+    this.notes = "";
   }
 
   openUpdateDialog(data: ITask): void {
