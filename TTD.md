@@ -67,3 +67,10 @@ Create services for API access [43:40] todo: stopwatch
 - [X] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
 - [X] - Update the task type drop down? Or leave it? Set it to all after adding a task
 - [X] Add Manual Task is broken
+
+
+[ ] Update Task Type after clicking Task Type drop down
+[ ] Group Task Types
+[ ] Sort by End Time
+[ ] Elapsed Time from Start Time to End Time
+[ ] Add notes section to stopwatch grid
