@@ -74,3 +74,9 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Sort by End Time
 [ ] Elapsed Time from Start Time to End Time
 [ ] Add notes section to stopwatch grid
+
+
+[ ] Task Stopwatch - Save Task without recording a time
+[ ] Task Scheduler - Add Notes column to grid
+[ ] Task Scheduler - Add checkbox column to grid
+[ ] Task Scheduler - Update task names within time range
