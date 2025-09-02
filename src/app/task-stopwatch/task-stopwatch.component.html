@@ -26,6 +26,7 @@
             <th></th>
             <th>Task Name</th>
             <th *ngIf="displayTaskType">Task Type</th>
+            <th>Notes</th>
             <th>Elapsed Time</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -42,6 +43,7 @@
             </td>
             <td>{{task.name}}</td>
             <td *ngIf="displayTaskType">{{getTaskType(task.taskTypeId)}}</td>
+            <td>{{task.notes}}</td>
             <td>{{task.elapsedTime}}</td>
             <td>{{task.startTime}}</td>
             <td>{{task.endTime}}</td>
@@ -55,6 +57,7 @@
             <td>Total</td>
             <td></td>
             <td *ngIf="displayTaskType"></td>
+            <td></td>
             <td>{{totalElapsedTime}}</td>
             <td></td>
             <td></td>
