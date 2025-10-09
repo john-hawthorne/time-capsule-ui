@@ -26,12 +26,14 @@
           <tr>
             <th>Scheduled Time</th>
             <th>Task Name</th>
+            <th>Completed</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
             <td>{{timeSlot.slotTime}}</td>
             <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
+            <td><input type="checkbox" [(ngModel)]="timeSlot.checked" /></td>
           </tr>
         </tbody>
       </table>

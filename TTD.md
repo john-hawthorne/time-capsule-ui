@@ -34,10 +34,10 @@ Create services for API access [43:40] todo: stopwatch
 
 [X] Add Manual Task
 [ ] Add a completed checkbox to Scheduler grid
-- [ ] Need to update TimeSlot data model
-- [ ] Add checkboxes to the Scheduler UI
+- [X] Need to update TimeSlot data model
+- [X] Add checkboxes to the Scheduler UI
 - [X] Update TimeSlot data model within UI
-- [ ] Update database with new field
+- [X] Update database with new field
 [X] Add notes to stopwatch grid
 - [X] Add notes column to tasks data model
 -- [X] UI
