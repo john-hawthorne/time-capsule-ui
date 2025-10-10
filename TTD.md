@@ -41,12 +41,13 @@ Create services for API access [43:40] todo: stopwatch
 - [ ] Save checked/unchecked completed task after clicking checkbox (performance (correct word?) issues?)
     - [ ] call api
     - [ ] call service
-    - [ ] saved updated checked field to database
+    - [ ] saved updated completed task field to database
     - [ ] multiple calls to database upon each check
     - [ ] should we use a save button instead?
         - [ ] keep track of when 1 or more checkboxes are checked
         - [ ] save only when there are 1 or more checkboxes checked
         - [ ] save button is used (only) to save checked time slots (for now)
+        - [ ] float right
 [X] Add notes to stopwatch grid
 - [X] Add notes column to tasks data model
 -- [X] UI
@@ -76,3 +77,5 @@ Create services for API access [43:40] todo: stopwatch
 - [X] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
 - [X] - Update the task type drop down? Or leave it? Set it to all after adding a task
 - [X] Add Manual Task is broken
+[ ] Add/Edit Schedule
+- [ ] Refactor TimeSlots HTML
