@@ -79,3 +79,4 @@ Create services for API access [43:40] todo: stopwatch
 - [X] Add Manual Task is broken
 [ ] Add/Edit Schedule
 - [ ] Refactor TimeSlots HTML
+- [ ] Convert form to tabular form
