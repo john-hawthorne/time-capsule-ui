@@ -79,6 +79,10 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     }
   }
 
+  saveCompleted(): void {
+    
+  }
+
   getSchedule(): void {
     this.taskScheduleService.getSchedule(this.selectedDate)
       .subscribe(response => {
