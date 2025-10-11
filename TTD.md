@@ -80,3 +80,10 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Add/Edit Schedule
 - [ ] Refactor TimeSlots HTML
 - [ ] Convert form to tabular form
+[ ] Home Page
+- [ ] Create a Schedule
+    - [ ] View Schedule if it exists
+[ ] Fix Edit Schedule Bug
+[ ] Create Test Database
+[ ] Create Staging Database
+[ ] Production Database?
