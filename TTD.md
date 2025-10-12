@@ -48,6 +48,8 @@ Create services for API access [43:40] todo: stopwatch
         - [ ] save only when there are 1 or more checkboxes checked
         - [ ] save button is used (only) to save checked time slots (for now)
         - [ ] float right
+    - [ ] save when editing
+    - [ ] disable checkboxes on schedule page
 [X] Add notes to stopwatch grid
 - [X] Add notes column to tasks data model
 -- [X] UI
