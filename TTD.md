@@ -39,6 +39,7 @@ Create services for API access [43:40] todo: stopwatch
 - [X] Update TimeSlot data model within UI
 - [X] Update database with new field
 - [ ] Completed Task Feature
+    - [ ] update edit schedule modal to use grid
     - [ ] save when editing
     - [X] disable checkboxes on schedule page
 [X] Add notes to stopwatch grid
