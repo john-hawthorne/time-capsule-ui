@@ -33,7 +33,7 @@
           <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
             <td>{{timeSlot.slotTime}}</td>
             <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
-            <td><input type="checkbox" [(ngModel)]="timeSlot.checked" /></td>
+            <td><input type="checkbox" [(ngModel)]="timeSlot.checked" disabled /></td>
           </tr>
         </tbody>
       </table>
