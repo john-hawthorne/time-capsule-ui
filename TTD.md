@@ -38,16 +38,7 @@ Create services for API access [43:40] todo: stopwatch
 - [X] Add checkboxes to the Scheduler UI
 - [X] Update TimeSlot data model within UI
 - [X] Update database with new field
-- [ ] Save checked/unchecked completed task after clicking checkbox (performance (correct word?) issues?)
-    - [ ] call api
-    - [ ] call service
-    - [ ] saved updated completed task field to database
-    - [ ] multiple calls to database upon each check
-    - [ ] should we use a save button instead?
-        - [ ] keep track of when 1 or more checkboxes are checked
-        - [ ] save only when there are 1 or more checkboxes checked
-        - [ ] save button is used (only) to save checked time slots (for now)
-        - [ ] float right
+- [ ] Completed Task Feature
     - [ ] save when editing
     - [X] disable checkboxes on schedule page
 [X] Add notes to stopwatch grid
