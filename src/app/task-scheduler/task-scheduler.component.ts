@@ -14,8 +14,6 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
   selectedDate: string;
   dayOfWeek: string;
   schedule: ITaskSchedule;
-  scheduleMap: Map<number, Array<string>> = new Map<number, Array<string>>();
-  
 
   constructor(private taskScheduleService: TaskSchedulerService) {
     this.selectedDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
@@ -25,7 +23,6 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getSchedule();
-    this.initializeScheduleMap();
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -96,25 +93,4 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
         }
       });
   };
-
-  initializeScheduleMap(): void {
-    this.scheduleMap.set(0, ["6AM", "taskOne"]);
-    this.scheduleMap.set(1, ["7AM", "taskTwo"]);
-    this.scheduleMap.set(2, ["8AM", "taskThree"]);
-    this.scheduleMap.set(3, ["9AM", "taskFour"]);
-    this.scheduleMap.set(4, ["10AM", "taskFive"]);
-    this.scheduleMap.set(5, ["11AM", "taskSix"]);
-    this.scheduleMap.set(6, ["12PM", "taskSeven"]);
-    this.scheduleMap.set(7, ["1PM", "taskEight"]);
-    this.scheduleMap.set(8, ["2PM", "taskNine"]);
-    this.scheduleMap.set(9, ["3PM", "taskTen"]);
-    this.scheduleMap.set(10, ["4PM", "taskEleven"]);
-    this.scheduleMap.set(11, ["5PM", "taskTwelve"]);
-    this.scheduleMap.set(12, ["6PM", "taskThirteen"]);
-    this.scheduleMap.set(13, ["7PM", "taskFourteen"]);
-    this.scheduleMap.set(14, ["8PM", "taskFifteen"]);
-    this.scheduleMap.set(15, ["9PM", "taskSixteen"]);
-    this.scheduleMap.set(16, ["10PM", "taskSeventeen"]);
-    this.scheduleMap.set(17, ["11PM", "taskEighteen"]);
-  }
 }

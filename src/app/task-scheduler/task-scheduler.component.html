@@ -210,10 +210,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor='let entry of scheduleMap | keyvalue;'>
-                <td>{{entry.value[0]}}</td>
-                <input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="names[entry.key]" name={{entry.value[1]}}/>
-                <td></td>
+              <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
+                <td>{{timeSlot.slotTime}}</td>
+                <input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="timeSlot.taskName" name={{timeSlot.taskId}}/>
+                <td><input type="checkbox" [(ngModel)]="timeSlot.checked" name={{timeSlot.timeSlotId}} /></td>
               </tr>
             </tbody>
           </table>
