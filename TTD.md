@@ -33,7 +33,7 @@ rewrite stopwatch[56:53]
 Create services for API access [43:40] todo: stopwatch
 
 [X] Add Manual Task
-[ ] Completed Task Feature
+[X] Completed Task Feature
 - [X] Need to update TimeSlot data model
 - [X] Add checkboxes to the Scheduler UI
 - [X] Update TimeSlot data model within UI
@@ -41,9 +41,6 @@ Create services for API access [43:40] todo: stopwatch
 - [X] update edit schedule modal to use grid
 - [X] save completed task field to database
 - [X] disable checkboxes on schedule page
-- [ ] add schedule
-    - [ ] refactor html
-    - [ ] save completed task field to database
 [X] Add notes to stopwatch grid
 - [X] Add notes column to tasks data model
 -- [X] UI

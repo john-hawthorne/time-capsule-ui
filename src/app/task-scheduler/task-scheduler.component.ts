@@ -36,14 +36,6 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addSchedule(): void {
-    this.taskScheduleService.addSchedule(this.selectedDate, this.names)
-      .subscribe(() => {
-        this.getSchedule();
-        // console.log("Failed to add schedule.")
-      })
-  };
-
   updateSchedule(): void {
     this.taskScheduleService.updateSchedule(this.selectedDate, this.schedule.timeSlots)
       .subscribe(() => {

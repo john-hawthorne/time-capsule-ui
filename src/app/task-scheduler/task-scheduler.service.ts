@@ -38,14 +38,4 @@ export class TaskSchedulerService {
 
     return this.httpClient.delete(this.baseUrl + 'taskscheduler', options);
   }
-
-  addSchedule(selectedDate: string, names: string[]): Observable<object> {
-    const options = {
-      params: new HttpParams()
-        .set('selectedDate', selectedDate)
-        .set('taskTypeId', 1)
-    };
-
-    return this.httpClient.post(this.baseUrl + 'taskscheduler', names, options);
-  }
 }
