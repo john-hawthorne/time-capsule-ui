@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { environment } from '../../environments/environment';
 import { ITaskSchedule } from '../../models/task-scheduler/taskschedule.model';
+import { ITimeSlot } from '../../models/task-scheduler/timeslot.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,14 @@ export class TaskSchedulerService {
     return this.httpClient.get<ITaskSchedule>(this.baseUrl + 'taskscheduler', options);
   }
 
-  updateSchedule(selectedDate: string, names: string[]): Observable<object> {
+  updateSchedule(selectedDate: string, timeSlots: ITimeSlot[]): Observable<object> {
     const options = {
       params: new HttpParams()
         .set('selectedDate', selectedDate)
         .set('taskTypeId', 1)
     };
 
-    return this.httpClient.put(this.baseUrl + 'taskscheduler', names, options);
+    return this.httpClient.put(this.baseUrl + 'taskscheduler', timeSlots, options);
   }
 
   deleteSchedule(selectedDate: string): Observable<object> {
