@@ -80,3 +80,4 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Task Scheduler - Add Notes column to grid
 [ ] Task Scheduler - Add checkbox column to grid
 [ ] Task Scheduler - Update task names within time range
+[ ] Task Stopwatch - Combine Tasks - Get lowest start time and highest end time
