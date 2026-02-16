@@ -73,6 +73,7 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Add/Edit Schedule
 - [ ] Refactor TimeSlots HTML
 - [ ] Convert form to tabular form
+- [ ] Shift items in schedule
 [ ] Home Page
 - [ ] Create a Schedule
     - [ ] View Schedule if it exists
@@ -81,3 +82,5 @@ Create services for API access [43:40] todo: stopwatch
 [ ] Create Test Database
 [ ] Create Staging Database
 [ ] Production Database?
+[ ] Insights?
+[ ] - Average time it takes to complete a task
