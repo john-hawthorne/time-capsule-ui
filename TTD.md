@@ -40,10 +40,6 @@ rewrite stopwatch[56:53]
 [ ] Different color for the types of buttons
 [ ] Rename AddModal
 [-] Add Task Type within Add Task Modal (only one modal displays? doesn't look like there can be two modals displayed at the same time?)
-[X] Improve task type component styling 
-[X] Update Task type after adding task
-[X] Update Task Type after adding manual task
-[X] Update Task type after updating task
 [X] Bugs
 - [X] Task Type dropdown not updating after changing tasks' task type
 - [X] After adding a task, the task type doesn't display in the grid when all is selected in the task type dropdown
