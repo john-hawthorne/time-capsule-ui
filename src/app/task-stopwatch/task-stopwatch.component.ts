@@ -4,6 +4,7 @@ import * as bootstrap from 'bootstrap';
 import { ITask } from 'src/models/task-stopwatch/task.model';
 import {ITaskType} from "../../models/task-stopwatch/tasktype.model";
 import {TaskStopwatchService} from "./task-stopwatch.service";
+import { TaskTypeService } from '../task-type/task-type.service'; // TODO: move to custom component
 
 @Component({
   selector: 'app-task-stopwatch',
@@ -40,7 +41,9 @@ export class TaskStopwatchComponent implements AfterViewInit {
   modal: bootstrap.Modal | null;
   modalName: string;
   errorMessage: string;
-  constructor(private taskStopwatchService: TaskStopwatchService) {
+  addTaskBtn: boolean;
+
+  constructor(private taskStopwatchService: TaskStopwatchService, private taskTypeService: TaskTypeService) {
     this.name = '';
     this.saveDisabled = true;
     this.stopDisabled = true;
@@ -64,6 +67,7 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.errorMessage = '';
     this.emptyTask = new ITask("", "", "", 1, "", "", "");
     this.manualTask = new ITask("", "", "", 1, "", "", "");
+    this.addTaskBtn = false;
   }
 
   ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
@@ -287,6 +291,30 @@ export class TaskStopwatchComponent implements AfterViewInit {
       this.goDisabled = true;
       this.stopDisabled = false;
     }
+  }
+
+  // TODO: Move to custom component
+  addTaskTypeEvt(): void {
+    this.addTaskBtn = !this.addTaskBtn;
+  }
+
+  // TODO: Move to custom component
+  addTaskType(): void {
+    this.taskTypeService.addTaskType(this.taskTypeName)
+    .subscribe(response => {
+      this.getTaskTypes();
+    })
+  }
+
+  // TODO: Move to custom component
+  getTaskTypes(): void {
+    this.taskTypeService.getTaskTypes()
+    .subscribe(response => {
+      this.taskTypes = [...response];
+      this.modalTaskTypeId = this.taskTypes[this.taskTypes.length-1].id;
+      this.taskTypeName = '';
+      this.addTaskTypeEvt();
+    })
   }
 
   getTasks(): void {
