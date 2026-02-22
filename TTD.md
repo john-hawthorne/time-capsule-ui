@@ -3,13 +3,8 @@
 - constructor = property initialization  
 - ngOnit = beyond property initialization
 
-[ ] Rename scheduler model
-[ ] Am I using the correct classes for styling?  
-[ ] Weird issue with modal  
-[ ] Add Angular Route Guards  
--Should I use route guards to prevent access to pages if the user hasn't logged in?  
-[ ] Add login/logout capability (research needed)
-[ ] Stop stopwatch if user submits new task without stopping stopwatch
+[ ] Weird issue with modal   
+-Should I use route guards to prevent access to pages if the user hasn't logged in?
 [ ] Click Task from Scheduler and Pop Up Stopwatch with Task Name prefilled(move to Stopwatch page maybe?)
 [X] Deploy (CLI) [2:27:18], Deploy (environments) [35:18]
 
