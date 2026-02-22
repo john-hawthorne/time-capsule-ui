@@ -38,11 +38,11 @@ Create services for API access [43:40] todo: stopwatch
 - [ ] Add checkboxes to the Scheduler UI
 - [ ] Update TimeSlot data model within UI
 - [ ] Update database with new field
-[ ] Add notes to stopwatch grid
-- [ ] Add notes column to tasks data model
--- [ ] UI
--- [ ] API
--- [ ] Database
+[X] Add notes to stopwatch grid
+- [X] Add notes column to tasks data model
+-- [X] UI
+-- [X] API
+-- [X] Database
 [ ] Request Body
 - [ ] Add Task
 - [ ] Add Manual Task
@@ -56,7 +56,7 @@ Create services for API access [43:40] todo: stopwatch
 [X] Modify scheduler to update when a new date is selected
 [X] Delete schedule 
 [X] Disable schedule date
-[ ] Rename AddModal
+[X] Rename AddModal
 [-] Add Task Type within Add Task Modal (only one modal displays? doesn't look like there can be two modals displayed at the same time?)
 [X] Improve task type component styling 
 [X] Update Task type after adding task
