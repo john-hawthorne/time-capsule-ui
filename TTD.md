@@ -12,22 +12,6 @@
 models, disabling, and canceling[1:24:24]
 rewrite stopwatch[56:53]
 
-[ ] Add a completed checkbox to Scheduler grid
-- [ ] Need to update TimeSlot data model
-- [ ] Add checkboxes to the Scheduler UI
-- [ ] Update TimeSlot data model within UI
-- [ ] Update database with new field
-[ ] Add notes to stopwatch grid
-- [ ] Add notes column to tasks data model
--- [ ] UI
--- [ ] API
--- [ ] Database
-[ ] Request Body
-- [ ] Add Task
-- [ ] Add Manual Task
-- [ ] Update Task
-[ ] Group the tasks together in a box?
-[ ] Different color for the types of buttons
 [ ] Rename AddModal
 [-] Add Task Type within Add Task Modal (only one modal displays? doesn't look like there can be two modals displayed at the same time?)
 [X] Bugs
