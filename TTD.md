@@ -1,13 +1,3 @@
-[ ] Select tasks from schedule within Stopwatch page(tasks from today’s schedule)
-[X] Difference between constructor and ngOnit  
-- constructor = property initialization  
-- ngOnit = beyond property initialization
-
-[ ] Weird issue with modal   
--Should I use route guards to prevent access to pages if the user hasn't logged in?
-[ ] Click Task from Scheduler and Pop Up Stopwatch with Task Name prefilled(move to Stopwatch page maybe?)
-[X] Deploy (CLI) [2:27:18], Deploy (environments) [35:18]
-
 - What is this? -
 models, disabling, and canceling[1:24:24]
 rewrite stopwatch[56:53]
