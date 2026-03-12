@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {formatDate} from "@angular/common";
 import {ITaskSchedule} from "../../models/task-scheduler/taskschedule.model";
+import {ITimeSlot} from "../../models/task-scheduler/timeslot.model"
 import { TaskSchedulerService } from './task-scheduler.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
   selectedDate: string;
   dayOfWeek: string;
   schedule: ITaskSchedule;
+
   constructor(private taskScheduleService: TaskSchedulerService) {
     this.selectedDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
     this.dayOfWeek = formatDate(new Date, 'fullDate' , 'en');
@@ -34,37 +36,8 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     }
   }
 
-  reset(): void {
-    if (typeof this.names !== 'undefined') {
-      for (var i = 0; i < 18; i++) {
-        this.names[i] = "";
-      }
-    }
-  };
-
-  openAddDialog(): void {
-    this.reset();
-  };
-
-  openEditDialog(): void {
-    this.reset();
-    if (this.schedule.timeSlots.length > 0) {
-      for (let i = 0; i < this.schedule.timeSlots.length; i++) {
-        this.names[i] = this.schedule.timeSlots[i].taskName;
-      }
-    }
-  }
-
-  addSchedule(): void {
-    this.taskScheduleService.addSchedule(this.selectedDate, this.names)
-      .subscribe(() => {
-        this.getSchedule();
-        // console.log("Failed to add schedule.")
-      })
-  };
-
   updateSchedule(): void {
-    this.taskScheduleService.updateSchedule(this.selectedDate, this.names)
+    this.taskScheduleService.updateSchedule(this.selectedDate, this.schedule.timeSlots)
       .subscribe(() => {
         this.getSchedule();
       });
@@ -77,6 +50,10 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
           this.getSchedule();
         });
     }
+  }
+
+  saveCompleted(): void {
+
   }
 
   getSchedule(): void {
