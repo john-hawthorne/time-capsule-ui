@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col">
-          <button class="btn btn-primary float-end" (click)="getSchedule()">Get Schedule</button>
+          <button class="btn btn-primary float-end" (click)="getGridSchedule()">Get Schedule</button>
         </div>
       </form>
     </div>
@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
+          <tr *ngFor='let timeSlot of gridSchedule.timeSlots; index as i'>
             <td>{{timeSlot.slotTime}}</td>
             <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
             <td><input type="checkbox" [(ngModel)]="timeSlot.completedTask" disabled /></td>
@@ -39,19 +39,19 @@
       </table>
       <!-- Button trigger modal -->
       <div class="row">
-        <div class="col-auto" *ngIf="schedule.timeSlots && schedule.timeSlots.length == 0">
+        <div class="col-auto" *ngIf="gridSchedule.timeSlots && gridSchedule.timeSlots.length == 0">
           
         </div>
-        <div class="col-auto" *ngIf="schedule.timeSlots && schedule.timeSlots.length > 0">
-          <button *ngIf="schedule.scheduleId.includes('0000')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
+        <div class="col-auto" *ngIf="gridSchedule.timeSlots && gridSchedule.timeSlots.length > 0">
+          <button *ngIf="gridSchedule.scheduleId.includes('0000')" type="button" class="btn btn-primary" (click)="add()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
             <i class="bi bi-plus-circle"></i> Add Schedule
           </button>
-          <button *ngIf="!schedule.scheduleId.includes('0000')" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
+          <button *ngIf="!gridSchedule.scheduleId.includes('0000')" type="button" class="btn btn-secondary" (click)="edit()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
             <i class="bi bi-pencil-fill"></i> Edit Schedule
           </button>
         </div>
-        <div class="col-auto" *ngIf="!schedule.scheduleId.includes('0000')">
-          <button type="button" class="btn btn-danger" (click)="deleteSchedule()">Delete</button>
+        <div class="col-auto" *ngIf="!gridSchedule.scheduleId.includes('0000')">
+          <button type="button" class="btn btn-danger" (click)="deleteGridSchedule()">Delete</button>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor='let timeSlot of schedule.timeSlots; index as i'>
+              <tr *ngFor='let timeSlot of modalSchedule.timeSlots; index as i'>
                 <td>{{timeSlot.slotTime}}</td>
                 <input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="timeSlot.taskName" name={{timeSlot.taskId}}/>
                 <td><input type="checkbox" [(ngModel)]="timeSlot.completedTask" name={{timeSlot.timeSlotId}} /></td>

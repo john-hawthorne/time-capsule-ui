@@ -12,7 +12,7 @@ export class TaskSchedulerService {
   baseUrl = environment.apiUrl;
   constructor(private httpClient: HttpClient) { }
 
-  getSchedule(selectedDate: string): Observable<ITaskSchedule> {
+  getGridSchedule(selectedDate: string): Observable<ITaskSchedule> {
     const options = {
       params: new HttpParams().set('selectedDate', selectedDate)
     };
