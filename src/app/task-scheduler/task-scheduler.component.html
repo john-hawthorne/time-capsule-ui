@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let timeSlot of gridSchedule.timeSlots; index as i'>
+          <tr *ngFor='let timeSlot of gridSchedule?.timeSlots; index as i'>
             <td>{{timeSlot.slotTime}}</td>
             <td style="font-weight:bold;">{{timeSlot.taskName}}</td>
             <td><input type="checkbox" [(ngModel)]="timeSlot.completedTask" disabled /></td>
@@ -55,6 +55,7 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -78,7 +79,7 @@
             <tbody>
               <tr *ngFor='let timeSlot of modalSchedule.timeSlots; index as i'>
                 <td>{{timeSlot.slotTime}}</td>
-                <input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="timeSlot.taskName" name={{timeSlot.taskId}}/>
+                <td><input type="text" class="form-control" placeholder="Task Name" [(ngModel)]="timeSlot.taskName" [name]="timeSlot.taskId" /></td>
                 <td><input type="checkbox" [(ngModel)]="timeSlot.completedTask" name={{timeSlot.timeSlotId}} /></td>
               </tr>
             </tbody>
