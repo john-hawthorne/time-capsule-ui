@@ -43,10 +43,10 @@
           
         </div>
         <div class="col-auto" *ngIf="gridSchedule.timeSlots && gridSchedule.timeSlots.length > 0">
-          <button *ngIf="gridSchedule.scheduleId.includes('0000')" type="button" class="btn btn-primary" (click)="add()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
+          <button *ngIf="gridSchedule.scheduleId.includes('0000') && modalSchedule" type="button" class="btn btn-primary" (click)="add()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
             <i class="bi bi-plus-circle"></i> Add Schedule
           </button>
-          <button *ngIf="!gridSchedule.scheduleId.includes('0000')" type="button" class="btn btn-secondary" (click)="edit()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
+          <button *ngIf="!gridSchedule.scheduleId.includes('0000') && modalSchedule" type="button" class="btn btn-secondary" (click)="edit()" data-bs-toggle="modal" data-bs-keyboard="false" data-bs-target="#editModal">
             <i class="bi bi-pencil-fill"></i> Edit Schedule
           </button>
         </div>
