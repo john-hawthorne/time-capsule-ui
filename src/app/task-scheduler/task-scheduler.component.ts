@@ -8,7 +8,7 @@ import { TaskSchedulerService } from './task-scheduler.service';
   templateUrl: './task-scheduler.component.html',
   styleUrls: ['./task-scheduler.component.css']
 })
-export class TaskSchedulerComponent implements OnInit, AfterViewInit {
+export class TaskSchedulerComponent implements OnInit {
   selectedDate: string;
   dayOfWeek: string;
   gridSchedule: ITaskSchedule;
@@ -25,16 +25,12 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     this.getGridSchedule();
   }
 
-  ngAfterViewInit(): void { // hack p.135 - Angular Development with TypeScript
-    const sd = document.getElementById("selectedDate");
-    if (sd) {
-      sd.addEventListener("change", () => {
+  onDateChange(event: any): void {
+    if (event) {
         this.getGridSchedule();
         this.dayOfWeek = formatDate(this.selectedDate, 'fullDate', 'en');
-      })
     }
   }
-
 
   updateSchedule(): void {
     this.taskScheduleService.updateSchedule(this.selectedDate, this.modalSchedule.timeSlots)
@@ -64,9 +60,6 @@ export class TaskSchedulerComponent implements OnInit, AfterViewInit {
     this.taskScheduleService.getGridSchedule(this.selectedDate)
       .subscribe(response => {
         this.gridSchedule = JSON.parse(JSON.stringify(response));
-        for (let i = 0; i < this.gridSchedule.timeSlots.length; i++) {
-          this.names[i] = this.gridSchedule.timeSlots[i].taskName;
-        }
       });
   };
 }
