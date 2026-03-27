@@ -3,13 +3,13 @@ export class ITimeSlot {
   taskId: string;
   slotTime: Date;
   taskName: string;
-  checked: boolean;
+  completedTask: boolean;
 
-  constructor(timeSlotId: string, taskId: string, slotTime: Date, taskName: string) {
+  constructor(timeSlotId: string, taskId: string, slotTime: Date, taskName: string, completedTask: boolean) {
     this.timeSlotId = timeSlotId;
     this.taskId = taskId;
     this.slotTime = slotTime;
     this.taskName = taskName;
-    this.checked = false;
+    this.completedTask = completedTask;
   }
 }

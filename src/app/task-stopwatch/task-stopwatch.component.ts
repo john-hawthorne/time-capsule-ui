@@ -132,13 +132,6 @@ export class TaskStopwatchComponent implements AfterViewInit {
     this.editedEndDate = formatDate(new Date, 'yyyy-MM-dd', 'en');
   }
 
-  openNotes(data: ITask) {
-    this.modal = bootstrap.Modal.getInstance('#notesModal');
-    this.modalName = "Notes";
-    this.reset;
-    this.selectedTask = { ...data };
-  }
-
   reset(): void {
     let minElement = document.getElementById("mins");
     let secondElement = document.getElementById("seconds");
