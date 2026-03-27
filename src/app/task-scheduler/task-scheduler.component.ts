@@ -9,7 +9,6 @@ import { TaskSchedulerService } from './task-scheduler.service';
   styleUrls: ['./task-scheduler.component.css']
 })
 export class TaskSchedulerComponent implements OnInit, AfterViewInit {
-  names: string[] = [];
   selectedDate: string;
   dayOfWeek: string;
   gridSchedule: ITaskSchedule;
